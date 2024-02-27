@@ -1,0 +1,23 @@
+name: Github Action Demo
+run-name: ${{ github.actor }} is testing the action 🚀 of ${{ github.repository }}
+
+on: [push]
+
+jobs:
+  Exploring-Github-actions:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Hello, ${{ github.actor }}. You just triggered a Github Action 🚀"
+      - run: echo "The repository is ${{ github.repository }}"
+      - run: echo "The event that triggered the action is ${{ github.event_name }}"
+      - run: echo "The job is now running on ${{ runner.os }}"
+      - run: echo "The job is now running on ${{ runner.os }} with the version ${{ runner.os_version }}"
+      - run: echo "The name of your branch is ${{ github.ref }}"
+      - name: Checkout the repository
+        uses: actions/checkout@v2
+      - run: echo "The ${{ github.repository }} has been cloned to the runner"
+      - name: List the files in the repository
+        run: |
+          ls ${{ github.workspace }}
+      - run: echo "The commit message is ${{ github.event.head_commit.message }}"
+      - run: echo "The job status is ${{ job.status }}"
